@@ -1,41 +1,26 @@
 
 
-const shortLength = (string, number) => string.length <= number;
-shortLength('Hello World', 20);
+const isShortLength = (string, number) => string.length <= number;
+isShortLength('Hello World', 20);
 
-const equalToLength = (string, number) => string.length === number;
-equalToLength('Должно быть всё ок', 18);
+const isStringLengthEquals = (string, number) => string.length === number;
+isStringLengthEquals('Должно быть всё ок', 18);
 
-const moreToLength = (string, number) => string.length > number;
-moreToLength('Все и есть ок!!!', 10);
+const isMoreToLength = (string, number) => string.length > number;
+isMoreToLength('Все и есть ок!!!', 10);
 
 
 const isPalindrom = (string) => {
-  const tempString = string.toLowerCase();
-  let reverseString = "";
+  const tempString = string.toLowerCase().split(' ').join('');
+  let reverseString = '';
   for (let i = tempString.length - 1; i >= 0; i--) {
     reverseString += tempString[i];
   }
   return tempString === reverseString;
-}
+};
+isPalindrom('Лёша на полке клопа нашёл');
 
-console.log(isPalindrom(топот));
-
-
-const isPalindrom = (string) => {
-  const tempString = string.toLowerCase().split(' ').join('')
-  console.log(tempString);
-  let reverseString = "";
-  for (let i = tempString.length - 1; i >= 0; i--) {
-    reverseString += tempString[i];
-  }
-  return tempString === reverseString;
-}
-
-console.log(isPalindrom(''));
-
-
-function extractDigitsFromString(str) {
+const extractDigitsFromString = (str) => {
   let result = '';
   for (let i = 0; i < str.length; i++) {
     const char = str.charAt(i);
@@ -47,10 +32,10 @@ function extractDigitsFromString(str) {
     return NaN;
   }
   return parseInt(result, 10);
-}
+};
+extractDigitsFromString('2023 год');
 
-
-function addCharactersToBeginning(str, minLength, additionalChars) {
+const addCharactersToBeginning = (str, minLength, additionalChars) => {
   if (str.length >= minLength) {
     return str;
   }
@@ -59,4 +44,5 @@ function addCharactersToBeginning(str, minLength, additionalChars) {
     additionalCharsUsed += additionalChars;
   }
   return additionalCharsUsed.slice(-1 * (minLength - str.length)) + str;
-}
+};
+addCharactersToBeginning('1', 2, '0');
