@@ -45,6 +45,22 @@ const generateComment = () => {
 };
 
 // Функция для генерации объектов фотографий
+const generateComments = (count) => {
+  const comments = [];
+  const usedCommentIds = new Set();
+
+  for (let j = 1; j <= count; j++) {
+    let commentId = getRandomNumber(1, 1000);
+    while (usedCommentIds.has(commentId)) {
+      commentId = getRandomNumber(1, 1000);
+    }
+    usedCommentIds.add(commentId);
+    comments.push({ id: commentId, ...generateComment() });
+  }
+
+  return comments;
+};
+
 const generatePhotos = (count) => {
   const photos = [];
   const usedIds = new Set();
@@ -59,16 +75,7 @@ const generatePhotos = (count) => {
     const url = `photos/${i}.jpg`;
 
     const commentsCount = getRandomNumber(0, 10);
-    const comments = [];
-    const usedCommentIds = new Set();
-    for (let j = 1; j <= commentsCount; j++) {
-      let commentId = getRandomNumber(1, 1000);
-      while (usedCommentIds.has(commentId)) {
-        commentId = getRandomNumber(1, 1000);
-      }
-      usedCommentIds.add(commentId);
-      comments.push({ id: commentId, ...generateComment() });
-    }
+    const comments = generateComments(commentsCount);
 
     const likes = getRandomNumber(15, 200);
     const description = getRandomSentence(COMMENT_SENTENCES);
