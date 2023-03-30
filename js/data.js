@@ -56,7 +56,7 @@ export const generateComments = (count) => {
   return comments;
 };
 
-const generatePhotos = (count) => {
+export const generatePhotos = (count) => {
   const photos = [];
   const usedIds = new Set();
 
