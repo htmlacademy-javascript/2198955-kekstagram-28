@@ -1,6 +1,5 @@
+import './upload-form.js';
+import './filter.js';
+import { getData } from './load.js';
 
-import './util.js';
-import {generatePhotos} from './data.js';
-
-generatePhotos(2);
-
+getData();
